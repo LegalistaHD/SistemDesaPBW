@@ -15,7 +15,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <span class="d-none d-md-block ps-2" style="padding-right: 10px">{{ Auth::user()->name }}</span>
-            <img src="{{ url('') }}/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="{{ url('') }}/assets/img/profile.jpg" alt="Profile" class="rounded-circle">
           </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
