@@ -20,4 +20,8 @@ class RoleModel extends Model
     {
         return RoleModel::get();
     }
+
+    public function disposisiSurat() {
+        return $this->belongsToMany(disposisiSurat::class, 'role_disposisi', 'role_id', 'disposisi_id');
+    }
 }

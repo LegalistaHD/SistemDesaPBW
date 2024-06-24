@@ -3,10 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DisposisiSuratController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SuratEksternalController;
+use App\Models\DisposisiSurat;
+use App\Models\SuratEksternal;
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/', [AuthController::class, 'auth_login']);
@@ -34,6 +38,18 @@ Route::group(['middleware' => 'useradmin'], function() {
     Route::get('panel/surat', [SuratController::class, 'surat']);
     
     Route::get('panel/settings', [SettingsController::class, 'settings']);
+
+    Route::get('panel/suratEksternal', [SuratEksternalController::class, 'showAll']);
+    Route::get('panel/suratEksternal/add', [SuratEksternalController::class, 'showAddForm']);
+    Route::post('panel/suratEksternal/add', [SuratEksternalController::class, 'store']);
+    Route::get('panel/suratEksternal/showSurat/{id}', [SuratEksternalController::class, 'showSurat']);
+    Route::get('panel/suratEksternal/edit/{id}', [SuratEksternalController::class, 'showEditForm']);
+    Route::post('panel/suratEksternal/edit/{id}', [SuratEksternalController::class, 'edit']);
+    Route::get('panel/suratEksternal/delete/{id}', [SuratEksternalController::class, 'delete']);
+
+    Route::get('panel/disposisiSurat', [DisposisiSuratController::class, 'showAll']);
+    Route::get('panel/disposisiSurat/add', [DisposisiSuratController::class, 'showAddForm']);
+    Route::post('panel/disposisiSurat/add', [DisposisiSuratController::class, 'store']);
 
 });
 
