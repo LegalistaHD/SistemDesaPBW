@@ -47,7 +47,7 @@
       @if(!empty($PermissionSuratEksternal))
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) != 'suratEksternal') collapsed @endif" href="{{ url('panel/suratEksternal') }}">
-          <i class="bi bi-gear"></i>
+          <i class="bi bi-envelope"></i>
           <span>Surat Eksternal</span>
         </a>
       </li>
@@ -56,7 +56,7 @@
       @if(!empty($PermissionDisposisiSurat))
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) != 'disposisiSurat') collapsed @endif" href="{{ url('panel/disposisiSurat') }}">
-          <i class="bi bi-gear"></i>
+          <i class="bi bi-envelope"></i>
           <span>Disposisi Surat</span>
         </a>
       </li>

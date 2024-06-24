@@ -18,23 +18,23 @@ return new class extends Migration
         }
 
         Schema::create($tableNames['permission'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->string('slug'); 
-            $table->integer('groupby'); 
+            $table->unsignedBigInteger('groupby'); 
             $table->datetimes();
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->datetimes();
         });
 
         Schema::create($tableNames['role_has_permission'], function (Blueprint $table){
-            $table->increments('id');
-            $table->integer('role_id');
-            $table->integer('permission_id');
+            $table->id();
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('permission_id');
             $table->datetimes();
 
         });
