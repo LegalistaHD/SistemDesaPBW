@@ -6,6 +6,8 @@
         $PermissionRoles = App\Models\RoleHasPermissionModel::getPermission('Roles', Auth::user()->role_id);
         $PermissionSurat = App\Models\RoleHasPermissionModel::getPermission('Surat', Auth::user()->role_id);
         $PermissionSettings = App\Models\RoleHasPermissionModel::getPermission('Settings', Auth::user()->role_id);
+        $PermissionSuratEksternal = App\Models\RoleHasPermissionModel::getPermission('Surat Eksternal', Auth::user()->role_id);
+        $PermissionDisposisiSurat = App\Models\RoleHasPermissionModel::getPermission('Disposisi', Auth::user()->role_id);
       @endphp
 
       <li class="nav-item">
@@ -42,6 +44,24 @@
       </li>
       @endif
       
+      @if(!empty($PermissionSuratEksternal))
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'suratEksternal') collapsed @endif" href="{{ url('panel/suratEksternal') }}">
+          <i class="bi bi-gear"></i>
+          <span>Surat Eksternal</span>
+        </a>
+      </li>
+      @endif
+
+      @if(!empty($PermissionDisposisiSurat))
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'disposisiSurat') collapsed @endif" href="{{ url('panel/disposisiSurat') }}">
+          <i class="bi bi-gear"></i>
+          <span>Disposisi Surat</span>
+        </a>
+      </li>
+      @endif
+
       @if(!empty($PermissionSettings))
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) != 'settings') collapsed @endif" href="{{ url('panel/settings') }}">
@@ -50,7 +70,6 @@
         </a>
       </li>
       @endif
-
     </ul>
 
   </aside>
