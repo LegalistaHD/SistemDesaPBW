@@ -6,6 +6,7 @@ use App\Models\RoleHasPermissionModel;
 use Illuminate\Http\Request;
 use App\Models\RoleModel;
 use App\Models\User;
+use App\Models\UserHasRoleModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,7 +36,8 @@ class UsersController extends Controller
             abort(401);
         }
         
-        $data['getRole'] = RoleModel::getRecord();
+        $getRole = RoleModel::getRecord();
+        $data['getRole'] = $getRole;
         return view('panel.users.add', $data);
     }
 
@@ -55,8 +57,14 @@ class UsersController extends Controller
         $user->name = trim($request->name);
         $user->email = trim($request->email);
         $user->password = Hash::make($request->password);
-        $user->role_id = trim($request->role_id);
+        if (!empty($request->role_id)) {
+            $user->role_id = trim($request->role_id[0]);
+        } else {
+            return redirect('panel/users')->with('error', "At least one role must be selected");
+        }
         $user->save();
+
+        UserHasRoleModel::InsertUpdateRecord($request->role_id, $user->id);
 
         return redirect('panel/users')->with('success', "User Successfully Created");
 
@@ -72,6 +80,7 @@ class UsersController extends Controller
         
         $data['getRecord'] = User::getSingle($id);
         $data['getRole'] = RoleModel::getRecord();
+        $data['getUserRole'] = UserHasRoleModel::getUserRole($id);
         return view('panel.users.edit', $data);
     }
 
@@ -89,8 +98,9 @@ class UsersController extends Controller
         {
             $user->password = Hash::make($request->password);
         }
-        $user->role_id = trim($request->role_id);
         $user->save();
+
+        UserHasRoleModel::InsertUpdateRecord($request->role_id, $user->id);
 
         return redirect('panel/users')->with('success', "User Successfully Updated");
     }
@@ -108,4 +118,8 @@ class UsersController extends Controller
 
         return redirect('panel/users')->with('success', "User Succesfully Deleted");
     }
+
+
+    
+
 }

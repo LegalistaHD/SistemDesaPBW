@@ -40,12 +40,14 @@
                         <div class="row mb-3">
                             <label for="inputText" class="col-sm-12 col-form-label">Roles</label>
                             <div class="col-sm-12">
-                                <select class="form-control" name="role_id" required>
-                                    <option value="">Pilih Role</option>
-                                    @foreach($getRole as $value)
-                                    <option {{ ($getRecord->role_id == $value->id) ? 'selected' : '' }} value="{{ $value->id }}">{{ $value->name }}</option>
-                                    @endforeach
-                                </select>
+                                @foreach($getRole as $value)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="role_id[]" value="{{ $value->id }}" id="role_{{ $value->id }}" {{ $getUserRole->contains('role_id', $value->id) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="role_{{ $value->id }}">
+                                            {{ $value->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
 

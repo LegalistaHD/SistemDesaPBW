@@ -38,16 +38,26 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="inputText" class="col-sm-12 col-form-label">Roles</label>
-                            <div class="col-sm-12">
-                                <select class="form-control" name="role_id" required>
-                                    <option value="">Pilih Role</option>
-                                    @foreach($getRole as $value)
-                                    <option {{ (old('role_id') == $value->id) ? 'selected' : '' }} value="{{ $value->id }}">{{ $value->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                            <label style="display: block;" for="inputText" class="col-sm-12 col-form-label"><b>Roles</b></label>
+                        </div>   
+
+                            @foreach ($getRole as $value)
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col-md-3">
+                                            {{ $value['name'] }}
+                                        </div>
+
+                                        <div class="col-md-9">
+                                            <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label><input type="checkbox" value="{{ $value['id'] }}" name="role_id[]">{{ $value['name'] }}</label>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                            @endforeach
 
                         <div class="row mb-3">
                             <div class="col-sm-12" style="text-align: right">

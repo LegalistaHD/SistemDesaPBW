@@ -39,6 +39,14 @@ return new class extends Migration
 
         });
 
+        Schema::create($tableNames['user_has_role'], function (Blueprint $table){
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('role_id');
+            $table->datetimes();
+
+        });
+
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));

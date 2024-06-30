@@ -52,8 +52,6 @@ class User extends Authenticatable
 
     static public function getRecord()
     {
-        return User::select('users.*', 'roles.name as roles_name')
-                    ->join('roles', 'roles.id', '=', 'users.role_id')
-                    ->orderBy('users.id', 'asc')->get();
+        return User::get();
     }
 }

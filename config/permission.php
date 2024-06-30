@@ -37,6 +37,8 @@ return [
 
         'role_has_permission' => App\Models\RoleHasPermissionModel::class,
 
+        'user_has_role' => App\Models\UserHasRoleModel::class,
+
     ],
 
     'table_names' => [
@@ -64,6 +66,14 @@ return [
          */
 
         'role_has_permission' => 'role_has_permission',
+
+        /*
+         * When using the "HasRoles" trait from this package, we need to know which
+         * table should be used to retrieve your roles permissions. We have chosen a
+         * basic default value but you may easily change it to any table you like.
+         */
+
+        'user_has_role' => 'user_has_role',
     ],
 
 

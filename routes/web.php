@@ -38,6 +38,8 @@ Route::group(['middleware' => 'useradmin'], function() {
     Route::get('panel/surat', [SuratController::class, 'surat']);
     
     Route::get('panel/settings', [SettingsController::class, 'settings']);
+    Route::post('panel/settings/update-current-role/{id}', [SettingsController::class, 'updateCurrentRole'])->name('update-current-role');
+
 
     Route::get('panel/suratEksternal', [SuratEksternalController::class, 'showAll']);
     Route::get('panel/suratEksternal/add', [SuratEksternalController::class, 'showAddForm']);

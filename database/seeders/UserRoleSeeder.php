@@ -6,6 +6,7 @@ use App\Models\PermissionModel;
 use App\Models\RoleHasPermissionModel;
 use App\Models\RoleModel;
 use \App\Models\User;
+use App\Models\UserHasRoleModel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -29,43 +30,13 @@ class UserRoleSeeder extends Seeder
             User::factory()->create(array_merge([
                 'email' => 'raihan@gmail.com',
                 'name' => 'Raihan',
-                'role_id' => 1,
+                'role_id' => '1',
             ], $default_user_value));
     
             User::factory()->create(array_merge([
                 'email' => 'bisma@gmail.com',
                 'name' => 'Bisma',
-                'role_id' => 1,
-            ], $default_user_value));
-
-            User::factory()->create(array_merge([
-                'email' => 'operator@gmail.com',
-                'name' => 'Operator',
-                'role_id' => 2
-            ], $default_user_value));
-
-            User::factory()->create(array_merge([
-                'email' => 'kepaladesa@gmail.com',
-                'name' => 'Kepala Desa',
-                'role_id' => 3
-            ], $default_user_value));
-
-            User::factory()->create(array_merge([
-                'email' => 'sekdes@gmail.com',
-                'name' => 'Sekdes',
-                'role_id' => 4
-            ], $default_user_value));
-
-            User::factory()->create(array_merge([
-                'email' => 'kepalabidang@gmail.com',
-                'name' => 'Kepala Bidang',
-                'role_id' => 5
-            ], $default_user_value));
-
-            User::factory()->create(array_merge([
-                'email' => 'anggota@gmail.com',
-                'name' => 'Anggota Bidang',
-                'role_id' => 6
+                'role_id' => '3',
             ], $default_user_value));
             
             //Role
@@ -183,7 +154,11 @@ class UserRoleSeeder extends Seeder
             // RoleHasPermissionModel::create(['role_id' => '7', 'permission_id' => '20']);
             RoleHasPermissionModel::create(['role_id' => '7', 'permission_id' => '21']);
             // RoleHasPermissionModel::create(['role_id' => '7', 'permission_id' => '22']);
+
             
+            // UserHasRole
+            UserHasRoleModel::create(['user_id' => '1', 'role_id' => '1']);
+            UserHasRoleModel::create(['user_id' => '2', 'role_id' => '3']);
         
     }
 }
