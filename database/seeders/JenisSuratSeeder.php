@@ -21,7 +21,7 @@ class JenisSuratSeeder extends Seeder
         JenisSurat::truncate();
         Schema::enableForeignKeyConstraints();
         //
-        DB::table('jenissurats')->insert([
+        DB::table('jenis_surats')->insert([
             ['nama_jenis' => 'Biodata Penduduk', 'deskripsi' => 'Surat Biodata Penduduk adalah dokumen resmi yang memuat informasi lengkap mengenai identitas seorang penduduk. Dokumen ini biasanya dikeluarkan oleh instansi pemerintah setempat, seperti kelurahan atau desa, dan berfungsi untuk berbagai keperluan administrasi, termasuk pengajuan KTP, KK, surat keterangan domisili, dan lain-lain.', 
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],

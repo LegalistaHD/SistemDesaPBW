@@ -7,6 +7,7 @@ use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use App\Models\InputFormSurat;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\RoleHasPermissionModel;
 
 class SuratController extends Controller
@@ -21,16 +22,37 @@ class SuratController extends Controller
         return view('panel.surat.index');
     }
 
-    public function buatsurat(Request $request, Surat $surat){
+    //untuk user yang akan buat surat
+    public function buatsurat(){
         $jenisSurat = JenisSurat::all();
         $data = array('jenisSurat' => $jenisSurat);
-        return view('Homepage.BuatSurat.index', $data);//sesuain
+        // return $data;
+
+        return view('home.surat.create', $data);
     }
 
     
-    public function inputanSurat(Request $request){
+    // public function inputansurat(){
+    //     return 1;
+    //     $jenissurat = $request->input('jenissurat');
+    //     return $jennissurat;
+    //     $inputFormSurat = InputFormSurat::where('jenis_surat_id', $jenissurat)->get();
+    //     $profil = UserProfile::where('user_id', auth()->user()->id)->first();
+
+    //     // Ambil nama jenis surat
+    //     $jenisSurat = JenisSurat::find($jenissurat);
+
+    //     $data = [
+    //         'inputFormSurat' => $inputFormSurat,
+    //         'jenisSurat' => $jenisSurat
+    //     ];
+    //     return view('Homepage.inputSurat.index', compact('inputFormSurat', 'jenisSurat', 'profil'));
+    //     // return view('Homepage.inputSurat.index', $data);
+    // }
+    public function inputanSurat(Request $request)
+    {
         $jenissurat = $request->input('jenissurat');
-        $inputFormSurat = InputFormSurat::where('jenisSurat_id', $jenissurat)->get();
+        $inputFormSurat = InputFormSurat::where('jenis_surat_id', $jenissurat)->get();
         $profil = UserProfile::where('user_id', auth()->user()->id)->first();
 
         // Ambil nama jenis surat
@@ -38,9 +60,10 @@ class SuratController extends Controller
 
         $data = [
             'inputFormSurat' => $inputFormSurat,
-            'jenisSurat' => $jenisSurat
+            'jenisSurat' => $jenisSurat,
+            'profil' => $profil
         ];
-        return view('Homepage.inputSurat.index', compact('inputFormSurat', 'jenisSurat', 'profil'));
-        // return view('Homepage.inputSurat.index', $data);
+
+        return view('Homepage.inputSurat.index', $data);
     }
 }

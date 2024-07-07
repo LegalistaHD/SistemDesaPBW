@@ -57,7 +57,9 @@ Route::group(['middleware' => 'useradmin'], function() {
 
 
 //A3 Templating Surat
-Route::get('/create/surat', [AuthController::class, 'login']);
+Route::get('/buatsurat', [SuratController::class, 'buatsurat']);
+// Route::post('/formsurat', [SuratController::class, 'inputansurat']);
+Route::post('/formsurat', [SuratController::class, 'inputanSurat']);
 
 
 
