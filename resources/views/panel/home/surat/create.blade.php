@@ -52,7 +52,7 @@
 
                   @include('_message')
 
-                  {{-- <form class="row g-3" action="/formurat" method="post">
+                <form class="row g-3" action="/formsurat" method="post">
                     {{ csrf_field() }}
                     <div class="col-12">
                         <label for="kategori" class="form-label"></label>
@@ -63,27 +63,11 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="col-12 mt-3">
-                      <button class="btn btn-primary w-100" type="submit">Buat</button>
-                    </div>
-                  </form> --}}
-                  <form class="row g-3" action="/formsurat" method="post">
-                    {{ csrf_field() }}
-                    <div class="col-12">
-                        <label for="kategori" class="form-label"></label>
-                        <select class="form-select form-control" id="kategori" name="jenissurat" required>
-                            <option value="">Pilih jenis surat</option>
-                            @foreach($jenisSurat as $jenis)
-                                <option value="{{ $jenis->id }}" {{ old('category_id') == $jenis->id ? 'selected' : '' }}>{{ $jenis->nama_jenis }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    
                     <div class="col-12 mt-3">
                         <button class="btn btn-primary w-100" type="submit">Buat</button>
                     </div>
                 </form>
-                
 
                 </div>
               </div>

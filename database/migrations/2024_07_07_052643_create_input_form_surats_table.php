@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('jenis_surat_id')->constrained('jenis_surats')->onDelete('cascade');
             $table->string('field');
             $table->string('type');
+            $table->string('nama');
         });
     }
 

@@ -13,6 +13,25 @@ return new class extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->string('namaLengkap');
+            $table->string('tempatLahir');
+            $table->date('tanggalLahir');
+            $table->string('wargaNegara');
+            $table->string('kelamin');
+            $table->string('pekerjaan');
+            $table->string('agama');
+            $table->string('nik');
+            $table->string('nomorKk');
+            $table->string('keperluan');
+            $table->string('golonganDarah');
+            $table->string('rt');
+            $table->string('rw');
+            $table->string('dusun');
+            $table->string('desa');
+            $table->string('kecamatan');
+            $table->string('kabupaten');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -20,6 +20,12 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
+              <a class="dropdown-item d-flex align-items-center" href="/profile">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
               <a class="dropdown-item d-flex align-items-center" href="{{ url('logout') }}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Logout</span>

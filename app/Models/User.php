@@ -3,9 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\UserProfile;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class User extends Authenticatable
 {
@@ -45,6 +47,12 @@ class User extends Authenticatable
         ];
     }
 
+    public function profil(): MorphOne
+    {
+        return $this->morphOne(UserProfile::class, 'id');
+    }
+
+    
     static public function getSingle($id)
     {
         return User::find($id);

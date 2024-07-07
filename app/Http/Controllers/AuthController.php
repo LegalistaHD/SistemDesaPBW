@@ -10,9 +10,16 @@ class AuthController extends Controller
 {
     public function login()
     {
+
         // dd(Hash::make('password'));
         if(!empty(Auth::check())){
-            return redirect('panel/dashboard');
+            $role = auth()->user();
+            if($role->role_id == 1){
+                return redirect('panel/dashboard');
+            }else{
+                
+            }
+            
         }
 
         return view('auth.login');

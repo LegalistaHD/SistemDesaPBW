@@ -1,16 +1,23 @@
 <?php
 
+use App\Models\DisposisiSurat;
+use App\Models\SuratEksternal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DisposisiSuratController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\DisposisiSuratController;
 use App\Http\Controllers\SuratEksternalController;
-use App\Models\DisposisiSurat;
-use App\Models\SuratEksternal;
+
+
+Route::post('/formsurat', [SuratController::class, 'inputansurat']);
+
+
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/', [AuthController::class, 'auth_login']);
@@ -58,8 +65,6 @@ Route::group(['middleware' => 'useradmin'], function() {
 
 //A3 Templating Surat
 Route::get('/buatsurat', [SuratController::class, 'buatsurat']);
-// Route::post('/formsurat', [SuratController::class, 'inputansurat']);
-Route::post('/formsurat', [SuratController::class, 'inputanSurat']);
-
+Route::resource('/profile', UserProfileController::class);
 
 
