@@ -94,7 +94,7 @@ class SuratController extends Controller
             ]);
         }
 
-        return redirect('/panel/surat')->with('success', 'Surat berhasil dibuat!');
+        return redirect('panel/surat')->with('success', 'Surat berhasil dibuat!');
 
     }
 

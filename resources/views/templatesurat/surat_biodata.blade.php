@@ -100,15 +100,15 @@
     <div class="container">
         <!-- INI Kopsurat -->
         <div class="kop-surat">
-            <h1>Pemerintah Kabupaten Jimbaran</h1>
-            <h2>Kecamatan A</h2>
-            <h2>Desa B</h2>
-            <h4>Alamat Desa xyzzzyyy</h4>
+            <h1>Pemerintah Kabupaten Gianyar</h1>
+            <h2>Kecamatan Blahbatuh</h2>
+            <h2>Desa Bedulu</h2>
+            <h4>Jalan Raya Yeh Pulu, Desa Bedulu 80581</h4>
         </div>
         <table>
             <tr>
                 <td>112</td>
-                <td>0001012</td>
+                <td>80581</td>
             </tr>
         </table>
         <!-- INI Judul Surat -->
@@ -116,7 +116,11 @@
             <h2>{{ $jenisSurat }}</h2>
             <h4>Nomor: {{ $surat->nomor_surat }}</h4>
         </div>
-        <p>Yang bertanda tangan di bawah ini kami Desa Jimbaran, Kecamatan Unud, Kabupaten, menerangkan dengan sebenarnya bahwa:</p>
+        
+        <p>Yang bertanda tangan di bawah ini kami Desa Bedulu, Kecamatan Blahbatuh, Kabupaten Gianyar, menerangkan dengan sebenarnya bahwa:</p>
+
+        {{-- <p>Yang bertanda tangan di bawah ini kami Desa {{ nama_desa }}, Kecamatan {{ nama_kec }}, Kabupaten {{ nama_kab }}, menerangkan dengan sebenarnya bahwa:</p>
+         --}}
         <table>
             <tr>
                 <td style="width: 200px;">Nama</td>
@@ -143,22 +147,37 @@
                 <td>:</td>
                 <td>{{ $detailSurat->where('field', 'agama')->first()->value }}</td>
             </tr>
-        </table>
-        <p>Demikian surat keterangan ini dibuat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
-        <table style="width: 100%; margin-top: 5em;">
             <tr>
-                <td style="width: 50%; text-align: center;">
-                    <p>Mengetahui,</p>
-                    <p><strong>Kepala Desa</strong></p>
-                    <p>Komang Jackson</p>
-                </td>
-                <td style="width: 50%; text-align: center;">
-                    <p>Jimbaran, 11 Juni</p>
-                    <p><strong>Komang Jackson</strong></p>
-                    <p>Kepala Desa Amerika</p>
-                </td>
+                <td>Jenis Kelamin</td>
+                <td>:</td>
+                <td>{{ $detailSurat->where('field', 'kelamin')->first()->value }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan</td>
+                <td>:</td>
+                <td>{{ $detailSurat->where('field', 'pekerjaan')->first()->value }}</td>
+            </tr>
+            <tr>
+                <td>NIK</td>
+                <td>:</td>
+                <td>{{ $detailSurat->where('field', 'nomorKk')->first()->value }}</td>
             </tr>
         </table>
+        <p>Demikian surat keterangan ini dibuat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
+
+        <div class="row mt-5">
+            <div class="col-6 text-center">
+                <p>Mengetahui,</p>
+                <p><strong>Kepala Desa</strong> Lanang Purbhawa</p>
+                <p></p>
+            </div>
+            <div class="col-6 text-center">
+                <p>Jimbaran, 11 Juni</p>
+                <p><strong>Lanang Purbhawa</strong></p>
+                <p>Kepala Desa Bedulu</p>
+                
+            </div>
+        </div>
     </div>
     <a class="btn btn-primary" href="/generate-PDF/{{ $surat->id }}" role="button">Download Surat</a>
 </body>

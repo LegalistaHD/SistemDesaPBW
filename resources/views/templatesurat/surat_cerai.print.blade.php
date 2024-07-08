@@ -179,8 +179,7 @@
     </div>
     <div class="col-2"></div>
     </div>
-    
-    </div>
     <a class="btn btn-primary" href="/generate-PDF/{{ $surat->id }}" role="button" style="margin-bottom: 10px">Download Surat</a>
+    </div>
 </body>
 </html>
