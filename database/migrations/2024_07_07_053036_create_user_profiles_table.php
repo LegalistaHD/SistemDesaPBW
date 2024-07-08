@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('agama');
             $table->string('nik');
             $table->string('nomorKk');
-            $table->string('keperluan');
             $table->string('golonganDarah');
             $table->string('rt');
             $table->string('rw');

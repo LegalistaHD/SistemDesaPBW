@@ -15,11 +15,12 @@
 
                 <div class="card-body">
 
-                  <div class="pt-4 pb-2 ">
-                    <h5 class="card-title text-center pb-0 fs-4">Buat Surat</h5>
-                    <p class="text-center small">Pilih jenis surat yang akan dibuat</p>
+                  <div class="pt-4 pb-2 mb-5">
+                    <h5 class="card-title text-center pb-0 fs-4">{{$jenisSurat->nama_jenis }}</h5>
+                    <p class="text-center small">Input form dibawah untuk membuat surat!</p>
+                   
                   </div>
-
+                  <hr>
                   @include('_message')
 
                 <form class="row g-3" action="/submitsurat" method="post">
@@ -27,7 +28,7 @@
                     
                         @foreach($inputFormSurat as $input)
                             <div class="col-12">
-                                    <label for="{{ $input->field }}">{{ ucfirst($input->nama) }}</label>
+                                    <label class="mb-2 fw-bold fs-7" for="{{ $input->field }}">{{ ucfirst($input->nama) }}</label>
                                     @php
                                         $value = old($input->field, optional($profil)->{$input->field});
 
@@ -41,7 +42,7 @@
                                         id="{{ $input->field }}" 
                                         name="{{ $input->field }}"  
                                         value="{{ $value }}" 
-                                        placeholder="{{ $input->nama }}" required>
+                                         required>
                                   </div>
                         @endforeach
                         <input type="hidden" name="user_id" value="{{ Auth::id() }}">

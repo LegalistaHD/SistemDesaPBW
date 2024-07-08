@@ -48,7 +48,7 @@ class UserProfileController extends Controller
             'tempatLahir' => 'required|string|max:255',
             'tanggalLahir' => 'required',
             'wargaNegara' => 'required|string|max:255',
-            'kelamin' => 'required|integer|in:1,2',
+            'kelamin' => 'required|string',
             'pekerjaan' => 'required|string|max:255',
             'agama' => 'required|string|max:255',
             'nik' => 'required|unique:user_profiles,nik',

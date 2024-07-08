@@ -11,16 +11,16 @@
         <div class="col-lg-12">
           {{-- @include('_message') --}}
           <div class="row d-flex justify-content-end mb-3 me-1">
-            <div class="col-3 btn btn-primary me-2">
+            <div class="col-3 btn btn-primary me-2 shadow-sm">
               <a href="/buatsurat" class="text-white w-100 text-center text-bold">
                   <div>
                     Buat Surat
                   </div>
               </a>
             </div>
-            <div class="col-3 btn btn-warning">
+            <div class="col-3 btn btn-warning shadow-sm">
               <a href="/buatsurat" class="text-white w-100 text-center text-bold">
-                  Buat Surat
+                  Pengaduan
               </a>
             </div> 
               
@@ -62,15 +62,15 @@
                   <tbody>
                       @foreach ($surat as $s)
                           <tr>
-                          <th scope="row">{{  $s->id }}</th>
+                          <th scope="row">{{  $loop->iteration }}</th>
                           <td>{{ $s->nomor_surat }}</td>
                           <td>{{ $s->jenis_surat }}</td>
                           @if($s->validate == 0 && $s->tanda_tangan == 0)
-                              <td>Belum valid dan ttd</td>
+                              <td class="bg-danger text-white border">Belum valid dan ttd</td>
                           @elseif($s->validate == 1 && $s->tanda_tangan == 0)
-                              <td>Valid tapi belum ttd</td>
+                              <td class="bg-warning text-white">Valid tapi belum ttd</td>
                           @elseif($s->validate == 1 && $s->tanda_tangan == 1)
-                              <td>sukses</td>
+                              <td class="bg-success text-white">sukses</td>
                           @else
                               <td>Eror</td>
                           @endif
