@@ -13,19 +13,25 @@ class SettingsController extends Controller
 {
     public function settings()
     {
-        $PermissionRoles = RoleHasPermissionModel::getPermission('Settings', Auth::user()->role_id);
+        $user = Auth::user()->role_id;
+        $PermissionRoles = RoleHasPermissionModel::getPermission('Settings', $user);
         if(empty($PermissionRoles))
         {
             abort(401);
+        // }else if( $user == 8)
+        // {
+        //     return view('panel.home.profile.create');
+        }else{
+            $roles = RoleModel::all();
+            // Ambil role yang dimiliki oleh pengguna
+            $currentUserRoles = UserHasRoleModel::where('user_id', auth()->user()->id)->pluck('role_id')->toArray();
+
+            $data['roles'] = RoleModel::whereIn('id', $currentUserRoles)->get(); // Ambil role berdasarkan role_id yang dimiliki user
+            $data['currentUser'] = auth()->user(); // Ambil pengguna yang sedang login
+
+            return view('panel.settings.index', $data);
         }
-        $roles = RoleModel::all();
-        // Ambil role yang dimiliki oleh pengguna
-        $currentUserRoles = UserHasRoleModel::where('user_id', auth()->user()->id)->pluck('role_id')->toArray();
-
-        $data['roles'] = RoleModel::whereIn('id', $currentUserRoles)->get(); // Ambil role berdasarkan role_id yang dimiliki user
-        $data['currentUser'] = auth()->user(); // Ambil pengguna yang sedang login
-
-        return view('panel.settings.index', $data);
+        
     }
     
     public function updateCurrentRole(Request $request)

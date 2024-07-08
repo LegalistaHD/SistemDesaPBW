@@ -38,6 +38,12 @@ class UserRoleSeeder extends Seeder
                 'name' => 'Bisma',
                 'role_id' => '3',
             ], $default_user_value));
+
+            User::factory()->create(array_merge([
+                'email' => 'lanang@gmail.com',
+                'name' => 'lanang',
+                'role_id' => '8',
+            ], $default_user_value));
             
             //Role
             RoleModel::create(['name' => 'Admin']);
@@ -47,6 +53,7 @@ class UserRoleSeeder extends Seeder
             RoleModel::create(['name' => 'Kepala Bidang']);
             RoleModel::create(['name' => 'Anggota Bidang']);
             RoleModel::create(['name' => 'Kepala Dusun']);
+            RoleModel::create(['name' => 'Pengguna']);
             
             
 
@@ -155,10 +162,19 @@ class UserRoleSeeder extends Seeder
             RoleHasPermissionModel::create(['role_id' => '7', 'permission_id' => '21']);
             // RoleHasPermissionModel::create(['role_id' => '7', 'permission_id' => '22']);
 
+            //User biasa
+            RoleHasPermissionModel::create(['role_id' => '8', 'permission_id' => '1']);
+            RoleHasPermissionModel::create(['role_id' => '8', 'permission_id' => '10']);
+            RoleHasPermissionModel::create(['role_id' => '8', 'permission_id' => '11']);
+            RoleHasPermissionModel::create(['role_id' => '8', 'permission_id' => '12']);
+            RoleHasPermissionModel::create(['role_id' => '8', 'permission_id' => '13']);
+            RoleHasPermissionModel::create(['role_id' => '8', 'permission_id' => '14']);
+
             
             // UserHasRole
             UserHasRoleModel::create(['user_id' => '1', 'role_id' => '1']);
             UserHasRoleModel::create(['user_id' => '2', 'role_id' => '3']);
+            UserHasRoleModel::create(['user_id' => '3', 'role_id' => '8']);
         
     }
 }

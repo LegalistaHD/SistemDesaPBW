@@ -45,7 +45,7 @@
                         <th scope="row">{{  $value->id }}</th>
                         <td>{{ $value->name }}</td>
                         <td>{{ $value->email }}</td>
-                        <td>{{ $value->roles_name }}</td>
+                        <td>{{ $value->role_id }}</td>
                         <td>{{ $value->created_at }}</td>
                         <td>
                           @if(!empty($PermissionEdit))
