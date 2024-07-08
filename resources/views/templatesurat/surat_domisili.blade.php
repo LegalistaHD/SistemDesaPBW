@@ -41,89 +41,89 @@
         <div class="col-8 shadow-lg mt-4 mb-4 p-5">
         <!-- INI Kopsurat -->
         <div class="kop-surat">
-            <h1>Pemerintah Kabupaten {{ kabupaten }}</h1>
-            <h2>Kecamatan {{ kecamatan }}</h2>
-            <h2>{{ desa }}</h2>
-            <h4>{{ alamat_desa }}</h4>
+            <h1>Pemerintah Kabupaten Gianyar</h1>
+            <h2>Kecamatan Blahbatuh</h2>
+            <h2>Desa Bedulu</h2>
+            <h4>Jalan Raya Yeh Pulu, Desa Bedulu 80581</h4>
         </div>
         <hr>
         <!-- INI Judul Surat -->
         <div class="judul-surat">
-            <h2>{{ judul_surat }}</h2>
-            <h4>Nomor: {{ nomor }}/{{ tahun }}</h4>
+            <h2>{{ $jenisSurat }}</h2>
+            <h4>Nomor: {{ $surat->nomor_surat }}</h4>
         </div>
         
-        <p>Yang bertanda tangan di bawah ini Kepala Desa {{ nama_desa }} Kecamatan {{nama_kecamatan}} Kabupaten {{ nama_kab }} Provinsi {{ nama_provinsi }} menerangkan dengan sebenarnya bahwa :
-        </p>
+        <p>Yang bertanda tangan di bawah ini kami Desa {{ $detailSurat->where('field', 'desa')->first()->value }} , Kecamatan {{ $detailSurat->where('field', 'kecamatan')->first()->value }} , Kabupaten {{ $detailSurat->where('field', 'kabupaten')->first()->value }} , menerangkan dengan sebenarnya bahwa:</p>
         
         <table>
             <tr>
                 <td style="width: 200px;">Nama Lengkap</td>
                 <td>:</td>
-                <td>{{ s.name }}</td>
+                <td>{{ $detailSurat->where('field', 'namaLengkap')->first()->value }}</td>
             </tr>
             <tr>
                 <td>NIK/Nomor KTP</td>
                 <td>:</td>
-                <td>{{ s.ktp }}</td>
+                <td>{{ $detailSurat->where('field', 'nik')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Tempat/Tanggal Lahir</td>
                 <td>:</td>
-                <td>{{ s.ttl }}</td>
+                <td>{{ $detailSurat->where('field', 'tempatLahir')->first()->value }}/{{ $detailSurat->where('field', 'tanggalLahir')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Jenis Kelamin</td>
                 <td>:</td>
-                <td>{{ jk }}</td>
+                <td>{{ $detailSurat->where('field', 'kelamin')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Agama</td>
                 <td>:</td>
-                <td>{{ s.agama }}</td>
+                <td>{{ $detailSurat->where('field', 'agama')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Status</td>
                 <td>:</td>
-                <td>{{ s.status }}</td>
+                <td>{{ $detailSurat->where('field', 'status')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Pendidikan</td>
                 <td>:</td>
-                <td>{{ s.pendidikan }}</td>
+                <td>{{ $detailSurat->where('field', 'pendidikan')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Pekerjaan</td>
                 <td>:</td>
-                <td>{{ s.pekerjaan }}</td>
+                <td>{{ $detailSurat->where('field', 'pekerjaan')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Kewarganegaraan</td>
                 <td>:</td>
-                <td>{{ s.kewarganegaraan }}</td>
+                <td>{{ $detailSurat->where('field', 'wargaNegara')->first()->value }}</td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>{{ alamat }} Desa {{ nama_des }}, Kecamatan {{ nama_kec }}, Kabupaten [{{ nama_kab }}
+                <td>Desa {{ $detailSurat->where('field', 'desa')->first()->value }}, Kecamatan {{ $detailSurat->where('field', 'kecamatan')->first()->value }}, Kabupaten {{ $detailSurat->where('field', 'kabupaten')->first()->value }}
                 </td>
             </tr>
             </table>
             
 
-        <p class="mt-4" >Orang tersebut di atas adalah benar-benar warga kami yang bertempat tinggal di {{ alamat }} RT {{ rt }} RW {{ rw }} Dusun {{ dusun }} {{ sebutan_desa }} {{ nama_desa }} dan tercatat dengan No. KK : {{ no_ktp }} Kepala Keluarga : {{ kepala_kk }}.</p>
-        <p class="mt-4">Surat Keterangan ini dibuat untuk Keperluan : {{ keperluan }}.        </p>
+        <p class="mt-4" >Orang tersebut di atas adalah benar-benar warga kami yang bertempat tinggal di  RT {{ $detailSurat->where('field', 'rt')->first()->value }} RW {{ $detailSurat->where('field', 'rw')->first()->value }} Dusun {{ $detailSurat->where('field', 'dusun')->first()->value }} {{ $detailSurat->where('field', 'desa')->first()->value }} dan tercatat dengan No. KK : {{ $detailSurat->where('field', 'nomorKk')->first()->value }} Kepala Keluarga : {{ $detailSurat->where('field', 'namaLengkap')->first()->value }}.</p>
+        <p class="mt-4">Surat Keterangan ini dibuat untuk Keperluan : {{ $detailSurat->where('field', 'keperluan')->first()->value }}.        </p>
         <p class="mt-4">Demikian surat keterangan ini dibuat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.</p>
 
         <div class="text-end mt-4">
-            <p>{{ tempat }}, {{ tanggal }}</p>
-            <p><strong>{{ kepala_desa }}</strong></p>
-            <p>Kepala Desa {{ desa }}</p>
+            <p>Bedulu, 9 juli 2024</p>
+            <p><strong>Mardana</strong></p>
+            <p>Kepala Desa Bedulu</p>
         </div>
     </div>
     <div class="col-2"></div>
     </div>
     
     </div>
+    <a class="btn btn-primary" href="/generate-PDF/{{ $surat->id }}" role="button" style="margin-bottom: 10px">Download Surat</a>
 </body>
 </html>

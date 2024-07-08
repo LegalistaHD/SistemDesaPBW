@@ -7,6 +7,8 @@
 
     <section class="section surat">
       <div class="row">
+        @include('_message')
+
 
         <div class="col-lg-12">
           {{-- @include('_message') --}}
@@ -64,7 +66,7 @@
                           <tr>
                           <th scope="row">{{  $loop->iteration }}</th>
                           <td>{{ $s->nomor_surat }}</td>
-                          <td>{{ $s->jenis_surat }}</td>
+                          <td>{{ $s->jenisSurat->nama_jenis }}</td>
                           @if($s->validate == 0 && $s->tanda_tangan == 0)
                               <td class="bg-danger text-white border">Belum valid dan ttd</td>
                           @elseif($s->validate == 1 && $s->tanda_tangan == 0)

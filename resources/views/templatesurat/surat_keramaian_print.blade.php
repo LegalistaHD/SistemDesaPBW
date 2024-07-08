@@ -121,6 +121,5 @@
             <p>Kepala Desa Bedahulu</p>
         </div>
     </div>
-    <a class="btn btn-primary" href="/generate-PDF/{{ $surat->id }}" role="button" style="margin-bottom: 10px">Download Surat</a>
 </body>
 </html>

@@ -41,23 +41,15 @@
         <div class="col-8 shadow-lg mt-4 mb-4 p-5">
         <!-- INI Kopsurat -->
         <div class="kop-surat">
-            <h1>Pemerintah Kabupaten Jimbaran </h1>
-            <h2>Kecamatan A</h2>
-            <h2>Desa B</h2>
-            <h4>Alamat Desa xyzzzyyy</h4>
-            {{-- <h1>Pemerintah Kabupaten {{ kabupaten }}</h1>
-            <h2>Kecamatan {{ kecamatan }}</h2>
-            <h2>Desa {{ desa }}</h2>
-            <h4>Alamat Desa {{ alamat_desa }}</h4> --}}
+            <h1>Pemerintah Kabupaten Gianyar</h1>
+            <h2>Kecamatan Blahbatuh</h2>
+            <h2>Desa Bedulu</h2>
+            <h4>Jalan Raya Yeh Pulu, Desa Bedulu 80581</h4>
         </div>
         <table class="table">
             <tr>
                 <td>112</td>
-                {{-- <td>130</td> --}}
-                <td>0001012</td>
-                {{-- <td>{{ kode_desa }}</td>
-                <td></td>
-                <td>{{ kode_surat }}</td> --}}
+                <td>80581</td>
             </tr>
         </table>
         <!-- INI Judul Surat -->
@@ -68,7 +60,7 @@
             <h4>Nomor: {{ nomor }}/{{ tahun }}</h4> --}}
         </div>
         
-        <p>Yang bertanda tangan di bawah ini kami Desa Jimbaran, Kecamatan Unud, Kabupaten , menerangkan dengan sebenarnya bahwa:</p>
+        <p>Yang bertanda tangan di bawah ini kami Desa Bedulu, Kecamatan Blahbatuh, Kabupaten Gianyar, menerangkan dengan sebenarnya bahwa:</p>
 
         {{-- <p>Yang bertanda tangan di bawah ini kami Desa {{ nama_desa }}, Kecamatan {{ nama_kec }}, Kabupaten {{ nama_kab }}, menerangkan dengan sebenarnya bahwa:</p>
          --}}
@@ -98,46 +90,21 @@
                 <td>:</td>
                 <td>{{ $detailSurat->where('field', 'agama')->first()->value }}</td>
             </tr>
-            {{-- <tr>
+            <tr>
                 <td>Jenis Kelamin</td>
                 <td>:</td>
-                <td>{{ $detailSurat->where('field', 'Kelamin')->first()->value }}</td>
-            </tr> --}}
-            {{-- <tr>
+                <td>{{ $detailSurat->where('field', 'kelamin')->first()->value }}</td>
+            </tr>
+            <tr>
                 <td>Pekerjaan</td>
                 <td>:</td>
                 <td>{{ $detailSurat->where('field', 'pekerjaan')->first()->value }}</td>
-            </tr> --}}
-            {{-- <tr>
-                <td>Tempat Tinggal</td>
-                <td>:</td>
-                <td>{{ $detailSurat->where('field', 'Alamat')->first()->value }}</td>
-            </tr> --}}
-            {{-- <tr>
-                <td>Nomor KTP</td>
-                <td>:</td>
-                <td></td>
-            </tr> --}}
-            {{-- <tr>
-                <td>Nomor KK</td>
-                <td>:</td>
-                <td></td>
-            </tr> --}}
-            {{-- <tr>
-                <td>Keperluan</td>
-                <td>:</td>
-                <td></td>
             </tr>
             <tr>
-                <td>Berlaku</td>
+                <td>NIK</td>
                 <td>:</td>
-                <td></td>
+                <td>{{ $detailSurat->where('field', 'nomorKk')->first()->value }}</td>
             </tr>
-            <tr>
-                <td>Golongan Darah</td>
-                <td>:</td>
-                <td></td>
-            </tr> --}}
         </table>
 
         <p>Demikian surat keterangan ini dibuat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
@@ -145,16 +112,14 @@
         <div class="row mt-5">
             <div class="col-6 text-center">
                 <p>Mengetahui,</p>
-                <p><strong>Kepala Desa</strong> Komang jackson</p>
+                <p><strong>Kepala Desa</strong> Lanang Purbhawa</p>
                 <p></p>
             </div>
             <div class="col-6 text-center">
                 <p>Jimbaran, 11 Juni</p>
-                <p><strong>Komang jackson</strong></p>
-                <p>Kepala Desa Amerika</p>
-                {{-- <p>{{ tempat }}, {{ tanggal }}</p>
-                <p><strong>{{ kepala_desa }}</strong></p>
-                <p>Kepala Desa {{ desa }}</p> --}}
+                <p><strong>Lanang Purbhawa</strong></p>
+                <p>Kepala Desa Bedulu</p>
+                
             </div>
         </div>
     </div>
