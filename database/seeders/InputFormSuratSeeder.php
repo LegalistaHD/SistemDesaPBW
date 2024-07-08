@@ -24,7 +24,7 @@ class InputFormSuratSeeder extends Seeder
                 //Surat Biodata Penduduk
                 ['jenis_surat_id' => 1, 'field' => 'namaLengkap', 'type' => 'text', 'nama' => 'Nama Lengkap'],
                 ['jenis_surat_id' => 1, 'field' => 'tempatLahir', 'type' => 'text', 'nama' => 'Tempat Lahir'],
-                ['jenis_surat_id' => 1, 'field' => 'waktuLahir', 'type' => 'date', 'nama' => 'Waktu Lahir'],
+                ['jenis_surat_id' => 1, 'field' => 'tanggalLahir', 'type' => 'date', 'nama' => 'Waktu Lahir'],
                 ['jenis_surat_id' => 1, 'field' => 'umur', 'type' => 'text', 'nama' => 'Umur'],
                 ['jenis_surat_id' => 1, 'field' => 'wargaNegara', 'type' => 'text', 'nama' => 'Warga Negara'],
                 ['jenis_surat_id' => 1, 'field' => 'agama', 'type' => 'text', 'nama' => 'Agama'],

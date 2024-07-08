@@ -17,7 +17,7 @@ class Surat extends Model
 
     public function jenisSurat()
     {
-        return $this->belongsTo(JenisSurat::class, 'jenisSurat_id');
+        return $this->belongsTo(JenisSurat::class, 'jenis_surat');
     }
 
     public function detail_surat()

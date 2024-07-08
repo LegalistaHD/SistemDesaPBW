@@ -15,9 +15,6 @@ use App\Http\Controllers\DisposisiSuratController;
 use App\Http\Controllers\SuratEksternalController;
 
 
-Route::post('/formsurat', [SuratController::class, 'inputansurat']);
-
-
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/', [AuthController::class, 'auth_login']);
@@ -66,5 +63,12 @@ Route::group(['middleware' => 'useradmin'], function() {
 //A3 Templating Surat
 Route::get('/buatsurat', [SuratController::class, 'buatsurat']);
 Route::resource('/profile', UserProfileController::class);
+Route::post('/formsurat', [SuratController::class, 'inputansurat']);
+Route::post('/submitsurat', [SuratController::class, 'submitSurat']);
+Route::get('/historysurat', [SuratController::class, 'HistorySuratUser']);
+
+
+
+
 
 

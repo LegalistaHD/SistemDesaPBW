@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Surat;
 use App\Models\JenisSurat;
+use App\Models\DetailSurat;
 use App\Models\UserProfile;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\InputFormSurat;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use App\Models\RoleHasPermissionModel;
 
 class SuratController extends Controller
@@ -51,17 +53,15 @@ class SuratController extends Controller
     }
 
     public function submitSurat(Request $request){
-        // return $request;
         $request->validate([
-            'jenisSurat_id' => 'required|exists:jenissurats,id',
+            'jenis_surat' => 'required|exists:jenis_surats,id',
             //tambahkan validasi untuk user
         ]);
-
-        $inputFormSurat = InputFormSurat::where('jenisSurat_id', $request->input('jenisSurat_id'))->get();
+        $inputFormSurat = InputFormSurat::where('jenis_surat_id', $request->input('jenis_surat'))->get();
         $nomorSurat = '001';
         $surat = Surat::create([
-            'jenisSurat_id' => $request->input('jenisSurat_id'),
-            'nomorSurat' => $nomorSurat,
+            'jenis_surat' => $request->input('jenis_surat'),
+            'nomor_surat' => $nomorSurat,
             'user_id' => $request->input('user_id'), // Mengambil nilai dari inputan tersembunyi
             'validate' => false,
         ]);
@@ -77,5 +77,20 @@ class SuratController extends Controller
 
         return redirect('/')->with('success', 'Surat berhasil dibuat!');
 
+    }
+
+    public function HistorySuratUser(){
+        //view untuk nampilin surat2 user
+        if(Auth::check()) {
+            // User is logged in, proceed to fetch data
+            $user = Auth::user();
+            $surat = Surat::where('user_id', $user->id)->with('jenisSurat')->get();
+            
+
+            return view('panel.home.surat.index', ['surat' => $surat]);
+        } else {
+            // User belum login, bisa redirect atau tampilkan pesan error
+            return redirect()->route('/');
+        }
     }
 }
