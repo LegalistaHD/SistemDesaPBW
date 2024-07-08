@@ -18,6 +18,9 @@ use App\Http\Controllers\SuratEksternalController;
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/', [AuthController::class, 'auth_login']);
+Route::get('/register', [AuthController::class, 'regist']);
+Route::post('/register', [AuthController::class, 'store']);
+
 
 Route::get('logout', [AuthController::class, 'logout']);
 
@@ -65,7 +68,9 @@ Route::get('/buatsurat', [SuratController::class, 'buatsurat']);
 Route::resource('/profile', UserProfileController::class);
 Route::post('/formsurat', [SuratController::class, 'inputansurat']);
 Route::post('/submitsurat', [SuratController::class, 'submitSurat']);
-Route::get('/historysurat', [SuratController::class, 'HistorySuratUser']);
+Route::get('/surat/{id}', [SuratController::class, 'detail'])->name('surat.detail');
+Route::get('/generate-PDF/{id}', [SuratController::class, 'generatePDF']);
+// Route::get('/historysurat', [SuratController::class, 'HistorySuratUser']);
 
 
 

@@ -42,7 +42,7 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="{{ url('') }}" class="logo d-flex align-items-center w-auto">
+                <a href="" class="logo d-flex align-items-center w-auto">
                   <img src="{{ url('') }}/assets/img/logo.png" alt="">
                   <span class="d-none d-lg-block">Sistem Surat Desa</span>
                 </a>
@@ -58,19 +58,34 @@
                   </div>
 
                   @include('_message')
+                  @if ($errors->any())
+                  <div style="color: red;">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+                  @endif
 
                   <form class="row g-3" action="" method="post" >
                     {{ csrf_field() }}
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Email</label>
-                        <input type="text" name="email" class="form-control" id="yourEmail" required>
+                      <label for="name" class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" required>
                     </div>
-
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" required>
                     </div>
-
+                    <div class="col-12">
+                      <label for="phone" class="form-label">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="phone" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="password" required>
+                    </div>
                     <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" id="rememberMe">
@@ -78,7 +93,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                      <button class="btn btn-primary w-100" type="submit">Register</button>
                     </div>
                   </form>
 

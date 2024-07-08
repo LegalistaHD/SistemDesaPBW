@@ -30,18 +30,21 @@ class UserRoleSeeder extends Seeder
             User::factory()->create(array_merge([
                 'email' => 'raihan@gmail.com',
                 'name' => 'Raihan',
+                'phone' => '082145149626',
                 'role_id' => '1',
             ], $default_user_value));
     
             User::factory()->create(array_merge([
                 'email' => 'bisma@gmail.com',
                 'name' => 'Bisma',
+                'phone' => '082145149636',
                 'role_id' => '3',
             ], $default_user_value));
 
             User::factory()->create(array_merge([
                 'email' => 'lanang@gmail.com',
                 'name' => 'lanang',
+                'phone' => '082145149616',
                 'role_id' => '8',
             ], $default_user_value));
             

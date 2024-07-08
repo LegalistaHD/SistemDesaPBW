@@ -26,7 +26,7 @@ class UserProfileController extends Controller
             return view('panel.home.profile.index', ['data' => $data]);
         }
         // Jika tidak ada pengguna yang sedang login, redirect ke halaman login
-        return redirect()->route('login');
+        // return back();
     }
 
     /**
@@ -71,7 +71,8 @@ class UserProfileController extends Controller
 
        
 
-        return redirect('/');
+        // return redirect('/');
+        return back();
     }
 
 
