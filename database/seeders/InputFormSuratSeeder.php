@@ -20,7 +20,7 @@ class InputFormSuratSeeder extends Seeder
             Schema::enableForeignKeyConstraints();
     
             DB::table('input_form_surats')->insert([
-
+ 
                 //Surat Biodata Penduduk
                 ['jenis_surat_id' => 1, 'field' => 'namaLengkap', 'type' => 'text', 'nama' => 'Nama Lengkap'],
                 ['jenis_surat_id' => 1, 'field' => 'tempatLahir', 'type' => 'text', 'nama' => 'Tempat Lahir'],
@@ -33,7 +33,7 @@ class InputFormSuratSeeder extends Seeder
                 ['jenis_surat_id' => 1, 'field' => 'alamat', 'type' => 'text', 'nama' => 'Alamat'],
                 ['jenis_surat_id' => 1, 'field' => 'nik', 'type' => 'text', 'nama' => 'NIK'],
                 ['jenis_surat_id' => 1, 'field' => 'nomorKk', 'type' => 'text', 'nama' => 'Nomor KK'],
-                ['jenis_surat_id' => 1, 'field' => 'keperluan', 'type' => 'text', 'nama' => 'Keperluan'],
+                ['jenis_surat_id' => 1, 'field' => 'keperluan', 'type' => 'text', 'nama' => 'Keterangan'],
                 ['jenis_surat_id' => 1, 'field' => 'berlaku', 'type' => 'text', 'nama' => 'Berlaku Hingga'],
                 ['jenis_surat_id' => 1, 'field' => 'golonganDarah', 'type' => 'text', 'nama' => 'Golongan Darah'],
                 //Surat Wali
@@ -69,7 +69,7 @@ class InputFormSuratSeeder extends Seeder
                 ['jenis_surat_id' => 4, 'field' => 'pekerjaan', 'type' => 'text', 'nama' => 'Pekerjaan'],
                 ['jenis_surat_id' => 4, 'field' => 'wargaNegara', 'type' => 'text', 'nama' => 'Warga Negara'],
                 ['jenis_surat_id' => 4, 'field' => 'alamat', 'type' => 'text', 'nama' => 'Alamat'],
-                ['jenis_surat_id' => 4, 'field' => 'keperluan', 'type' => 'text', 'nama' => 'Keperluan'],
+                ['jenis_surat_id' => 4, 'field' => 'keperluan', 'type' => 'text', 'nama' => 'Keterangan'],
                 //Surat Dispensasi Waktu
                 ['jenis_surat_id' => 5, 'field' => 'namaLengkap', 'type' => 'text', 'nama' => 'Nama Lengkap'],
                 ['jenis_surat_id' => 5, 'field' => 'tempatLahir', 'type' => 'text', 'nama' => 'Tempat Lahir'],
@@ -100,7 +100,6 @@ class InputFormSuratSeeder extends Seeder
                 ['jenis_surat_id' => 7, 'field' => 'alamat', 'type' => 'text', 'nama' => 'Alamat'],
                 ['jenis_surat_id' => 7, 'field' => 'nik', 'type' => 'text', 'nama' => 'NIK'],
                 ['jenis_surat_id' => 7, 'field' => 'nomorKk', 'type' => 'text', 'nama' => 'Nomor KK'],
-                ['jenis_surat_id' => 7, 'field' => 'berlaku', 'type' => 'text', 'nama' => 'Berlaku Hingga'],
                 ['jenis_surat_id' => 7, 'field' => 'golonganDarah', 'type' => 'text', 'nama' => 'Golongan Darah'],
                 //Surat Permohonan Penduduk
                 ['jenis_surat_id' => 8, 'field' => 'namaLengkap', 'type' => 'text', 'nama' => 'Nama Lengkap'],
@@ -128,7 +127,7 @@ class InputFormSuratSeeder extends Seeder
                 ['jenis_surat_id' => 9, 'field' => 'alamat', 'type' => 'text', 'nama' => 'Alamat'],
                 ['jenis_surat_id' => 9, 'field' => 'nik', 'type' => 'text', 'nama' => 'NIK'],
                 ['jenis_surat_id' => 9, 'field' => 'nomorKk', 'type' => 'text', 'nama' => 'Nomor KK'],
-                ['jenis_surat_id' => 9, 'field' => 'keperluan', 'type' => 'text', 'nama' => 'Keperluan'],
+                ['jenis_surat_id' => 9, 'field' => 'keperluan', 'type' => 'text', 'nama' => 'Keterangan'],
                 ['jenis_surat_id' => 9, 'field' => 'berlaku', 'type' => 'text', 'nama' => 'Berlaku Hingga'],
                 ['jenis_surat_id' => 9, 'field' => 'golonganDarah', 'type' => 'date', 'nama' => 'Golongan Darah'],
                 //Surat Undangan

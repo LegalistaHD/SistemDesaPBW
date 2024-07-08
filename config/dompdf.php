@@ -99,12 +99,12 @@ return array(
          /**
           * @var string
           */
-        'log_output_file' => null,
+        // 'log_output_file' => null,
 
         /**
          * Whether to enable font subsetting or not.
          */
-        "enable_font_subsetting" => false,
+        // "enable_font_subsetting" => false,
 
         /**
          * The PDF rendering backend to use
@@ -134,7 +134,7 @@ return array(
          * @link http://www.ros.co.nz/pdf
          * @link http://www.php.net/image
          */
-        "pdf_backend" => "CPDF",
+        // "pdf_backend" => "CPDF",
 
         /**
          * PDFlib license key
@@ -160,7 +160,7 @@ return array(
          * the desired content might be different (e.g. screen or projection view of html file).
          * Therefore allow specification of content here.
          */
-        "default_media_type" => "screen",
+        // "default_media_type" => "screen",
 
         /**
          * The default paper size.
@@ -221,7 +221,7 @@ return array(
          *
          * @var int
          */
-        "dpi" => 150,
+        // "dpi" => 150,
 
         /**
          * Enable inline PHP
@@ -235,7 +235,7 @@ return array(
          *
          * @var bool
          */
-        "enable_php" => false,
+        // "enable_php" => false,
 
         /**
          * Enable inline Javascript
@@ -245,7 +245,7 @@ return array(
          *
          * @var bool
          */
-        "enable_javascript" => true,
+        // "enable_javascript" => true,
 
         /**
          * Enable remote file access
@@ -264,12 +264,12 @@ return array(
          *
          * @var bool
          */
-        "enable_remote" => true,
+        // "enable_remote" => true,
 
         /**
          * A ratio applied to the fonts height to be more like browsers' line height
          */
-        "font_height_ratio" => 1.1,
+        // "font_height_ratio" => 1.1,
 
         /**
          * Use the HTML5 Lib parser

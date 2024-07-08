@@ -55,7 +55,6 @@ class SuratController extends Controller
             return redirect('/profile');
         }
 
-
         $jenissurat = $request->input('jenissurat');
         $inputFormSurat = InputFormSurat::where('jenis_surat_id', $jenissurat)->get();
         $profil = UserProfile::where('user_id', auth()->user()->id)->first();
@@ -95,7 +94,7 @@ class SuratController extends Controller
             ]);
         }
 
-        return redirect('/')->with('success', 'Surat berhasil dibuat!');
+        return redirect('/panel/surat')->with('success', 'Surat berhasil dibuat!');
 
     }
 

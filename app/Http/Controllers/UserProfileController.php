@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class UserProfileController extends Controller
 {
@@ -70,9 +71,8 @@ class UserProfileController extends Controller
         DB::table('user_profiles')->insert($validated);
 
        
-
-        // return redirect('/');
-        return back();
+        $redirectUrl = Redirect::intended('/profile')->getTargetUrl();
+        return redirect($redirectUrl);
     }
 
 

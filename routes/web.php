@@ -64,7 +64,7 @@ Route::group(['middleware' => 'useradmin'], function() {
 
 
 //A3 Templating Surat
-Route::get('/buatsurat', [SuratController::class, 'buatsurat']);
+Route::get('/buatsurat', [SuratController::class, 'buatsurat'])->middleware('check.profile');;
 Route::resource('/profile', UserProfileController::class);
 Route::post('/formsurat', [SuratController::class, 'inputansurat']);
 Route::post('/submitsurat', [SuratController::class, 'submitSurat']);

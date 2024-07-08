@@ -27,6 +27,7 @@
                     {{ csrf_field() }}
                     
                         @foreach($inputFormSurat as $input)
+                          
                             <div class="col-12">
                                     <label class="mb-2 fw-bold fs-7" for="{{ $input->field }}">{{ ucfirst($input->nama) }}</label>
                                     @php
@@ -75,3 +76,58 @@
 
 
       @endsection
+
+      <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                // Get the date of birth from profile data (assuming it's already in ISO format)
+                const tanggalLahir = '{{ $profil->tanggalLahir ?? '' }}'; // Ensure tanggalLahir is in ISO format
+
+                // Get the age input element
+                const ageInput = document.getElementById('umur');
+
+                // Function to calculate age
+                function calculateAge(birthDate) {
+                    const today = new Date();
+                    const birthDateObj = new Date(birthDate);
+                    let age = today.getFullYear() - birthDateObj.getFullYear();
+                    const monthDiff = today.getMonth() - birthDateObj.getMonth();
+                    
+                    // If the birth month is greater than the current month or 
+                    // the birth day is greater than the current day, subtract one year from age
+                    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+                        age--;
+                    }
+                    return age;
+                }
+
+                // Function to initialize age calculation
+                function initializeAgeCalculation() {
+                    if (tanggalLahir) {
+                        const age = calculateAge(tanggalLahir);
+                        ageInput.value = age;
+                    } else {
+                        ageInput.value = '';
+                    }
+                }
+
+                // Trigger age calculation on page load
+                initializeAgeCalculation();
+            });
+
+
+        
+            document.addEventListener('DOMContentLoaded', function () {
+            // Function to update address field
+            function updateAddress(profile) {
+                const alamat = `Dusun ${profile.dusun}, Desa ${profile.desa}, Kecamatan ${profile.kecamatan}, Kabupaten ${profile.kabupaten}`;
+                document.getElementById('alamat').value = alamat;
+            }
+
+            // Assuming profile data is passed as a JavaScript object
+            const profile = @json($profil);
+
+            // Update address on page load
+            updateAddress(profile);
+        });
+
+      </script>
