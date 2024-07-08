@@ -6,7 +6,9 @@
     </div>
 
     <section class="section dashboard">
-
+      @if(session('success'))
+      <p class="alert alert-success">{{ session('success') }}</p>
+      @endif
     </section>
 
 @endsection

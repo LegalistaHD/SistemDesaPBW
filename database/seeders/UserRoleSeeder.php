@@ -48,6 +48,28 @@ class UserRoleSeeder extends Seeder
                 'role_id' => '8',
             ], $default_user_value));
             
+            User::factory()->create(array_merge([
+                'email' => 'ayuk@gmail.com',
+                'name' => 'ayuk',
+                'phone' => '081939197582',
+                'role_id' => '2',
+            ], $default_user_value));
+
+            User::factory()->create(array_merge([
+                'email' => 'ana@gmail.com',
+                'name' => 'ana',
+                'phone' => '081939197583',
+                'role_id' => '4',
+            ], $default_user_value));
+
+
+            User::factory()->create(array_merge([
+                'email' => 'juliana@gmail.com',
+                'name' => 'juliana',
+                'phone' => '081939197581',
+                'role_id' => '3',
+            ], $default_user_value));
+
             //Role
             RoleModel::create(['name' => 'Admin']);
             RoleModel::create(['name' => 'Operator']);
@@ -83,8 +105,8 @@ class UserRoleSeeder extends Seeder
             PermissionModel::create(['name' => 'Add Disposisi', 'slug' => 'Add Disposisi', 'groupby' => '6']);
             PermissionModel::create(['name' => 'Edit Disposisi', 'slug' => 'Edit Disposisi', 'groupby' => '6']);
             PermissionModel::create(['name' => 'Delete Disposisi', 'slug' => 'Delete Disposisi', 'groupby' => '6']);
-
-
+            PermissionModel::create(['name' => 'Validasi Operator', 'slug' => 'Validasi Operator', 'groupby' => '7']);
+            PermissionModel::create(['name' => 'Validasi Sekdes', 'slug' => 'Validasi Sekdes', 'groupby' => '8']);
             
             // RoleHasPermission
             RoleHasPermissionModel::create(['role_id' => '1', 'permission_id' => '1']);
@@ -120,7 +142,8 @@ class UserRoleSeeder extends Seeder
             RoleHasPermissionModel::create(['role_id' => '2', 'permission_id' => '16']);
             RoleHasPermissionModel::create(['role_id' => '2', 'permission_id' => '17']);
             RoleHasPermissionModel::create(['role_id' => '2', 'permission_id' => '18']);
-            
+            RoleHasPermissionModel::create(['role_id' => '2', 'permission_id' => '23']);
+
             RoleHasPermissionModel::create(['role_id' => '3', 'permission_id' => '1']);
             RoleHasPermissionModel::create(['role_id' => '3', 'permission_id' => '10']);
             RoleHasPermissionModel::create(['role_id' => '3', 'permission_id' => '11']);
@@ -141,7 +164,8 @@ class UserRoleSeeder extends Seeder
             RoleHasPermissionModel::create(['role_id' => '4', 'permission_id' => '19']);
             // RoleHasPermissionModel::create(['role_id' => '4', 'permission_id' => '20']);
             RoleHasPermissionModel::create(['role_id' => '4', 'permission_id' => '21']);
-            // RoleHasPermissionModel::create(['role_id' => '4', 'permission_id' => '22']);
+            // RoleHasPermissionModel::create(['role_id' => '4', 'permission_id' => '22']);4
+            RoleHasPermissionModel::create(['role_id' => '4', 'permission_id' => '24']);
 
             RoleHasPermissionModel::create(['role_id' => '5', 'permission_id' => '1']);
             RoleHasPermissionModel::create(['role_id' => '5', 'permission_id' => '10']);

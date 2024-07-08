@@ -23,6 +23,13 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="inputText" class="col-sm-12 col-form-label">No Telepon</label>
+                            <div class="col-sm-12">
+                            <input type="text" name="phone" value="{{ old('phone') }}" required class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="inputText" class="col-sm-12 col-form-label">Email</label>
                             <div class="col-sm-12">
                             <input type="email" name="email" value="{{ old('email') }}" required class="form-control">

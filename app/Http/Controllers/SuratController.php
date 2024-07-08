@@ -36,6 +36,8 @@ class SuratController extends Controller
         }      
     }
 
+    
+
     //untuk user yang akan buat surat / memilih jenis surat yang akan dibuat
     public function buatsurat(){
         $jenisSurat = JenisSurat::all();
@@ -95,14 +97,16 @@ class SuratController extends Controller
             ]);
         }
 
-        return redirect('/')->with('success', 'Surat berhasil dibuat!');
+        return redirect()->route('panel.dashboard')->with('success', 'Surat berhasil dibuat!');
 
     }
 
 
     public function detail($id){
+
         $surat = Surat::with('jenisSurat')->findOrFail($id);
         $jenisSurat = $surat->jenisSurat->nama_jenis;
+        // dd($surat);
         $detailSurat = DetailSurat::where('surat_id', $surat->id)->get();
         switch ($jenisSurat) {
             case 'Biodata Penduduk':
@@ -117,7 +121,8 @@ class SuratController extends Controller
                 return view('surat.izin', compact('surat', 'detailSurat', 'jenisSurat'));
                   
             default:
-                return view('surat.default', compact('surat'));}
+                return view('panel.surat.default', ['surat'=>$surat]);}
+
 
     }
 
@@ -142,6 +147,85 @@ class SuratController extends Controller
         $pdf = pdf::loadView('user.print');
         return $pdf->stream('test.pdf');
     }
+
+
+    public function showAll(){
+        $PermissionRoles = RoleHasPermissionModel::getPermission('Surat', Auth::user()->role_id);
+        if(empty($PermissionRoles))
+        {
+            abort(401);
+        }
+
+        $surats = Surat::with('user')->where('status','=',0)
+        ->join('users', 'surats.user_id', '=', 'users.id')
+        ->select('surats.*')
+        ->get();
+    
+        return view('panel.validasiSurat.validasiOperator', compact('surats'));
+        
+        }
+
+    public function validateByOperator($id)
+        {
+            // Validasi surat oleh operator
+            $letter = Surat::findOrFail($id);
+            // Lakukan validasi, misalnya dengan mengubah status
+            $letter->status =1;
+            $letter->save();
+    
+            return redirect()->route('panel.dashboard')->with('success', 'Surat berhasil divalidasi oleh operator.');
+        }
+
+        public function letterSekdes(){
+            $PermissionRoles = RoleHasPermissionModel::getPermission('Surat', Auth::user()->role_id);
+            if(empty($PermissionRoles))
+            {
+                abort(401);
+            }
+    
+            $surats = Surat::with('user')->where('status','=',1)
+            ->join('users', 'surats.user_id', '=', 'users.id')
+            ->select('surats.*')
+            ->get();
+        
+            return view('panel.validasiSurat.validasiSekdes', compact('surats'));
+            
+            }
+
+        public function validateBySekdes(Request $request, $id){
+            
+        }
+        
+        public function historySurat()
+        {
+            $PermissionRoles = RoleHasPermissionModel::getPermission('Surat', Auth::user()->role_id);
+            if(empty($PermissionRoles))
+            {
+                abort(401);
+            }
+    
+            $surats = Surat::with('user')->where('status','!=',0)
+            ->join('users', 'surats.user_id', '=', 'users.id')
+            ->select('surats.*')
+            ->get();
+        
+            return view('panel.validasiSurat.history', compact('surats'));
+        
+        }
+
+        public function historySurat()
+        {
+            $PermissionRoles = RoleHasPermissionModel::getPermission('Surat', Auth::user()->role_id);
+            if(empty($PermissionRoles))
+            {
+                abort(401);
+            }
+
+
+        }
+
+
+
 
     // public function HistorySuratUser(){
     //     //view untuk nampilin surat2 user

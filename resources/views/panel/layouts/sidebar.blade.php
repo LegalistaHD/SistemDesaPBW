@@ -8,6 +8,8 @@
         $PermissionSettings = App\Models\RoleHasPermissionModel::getPermission('Settings', Auth::user()->role_id);
         $PermissionSuratEksternal = App\Models\RoleHasPermissionModel::getPermission('Surat Eksternal', Auth::user()->role_id);
         $PermissionDisposisiSurat = App\Models\RoleHasPermissionModel::getPermission('Disposisi', Auth::user()->role_id);
+        $PermissionValidasiOperator = App\Models\RoleHasPermissionModel::getPermission('Validasi Operator', Auth::user()->role_id);
+        $PermissionValidasiSekdes = App\Models\RoleHasPermissionModel::getPermission('Validasi Sekdes', Auth::user()->role_id);
       @endphp
 
       <li class="nav-item">
@@ -40,6 +42,34 @@
         <a class="nav-link @if(Request::segment(2) != 'surat') collapsed @endif" href="{{ url('panel/surat') }}">
           <i class="bi bi-envelope"></i>
           <span>Surat</span>
+        </a>
+      </li>
+      @endif
+
+      @if(!empty($PermissionValidasiOperator))
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'suratValidasiOperator') collapsed @endif" href="{{ url('panel/suratAll') }}">
+          <i class="bi bi-check"></i>
+          <span>Surat Validasi Operator</span>
+        </a>
+      </li>
+      @endif
+
+      
+      @if(!empty($PermissionValidasiOperator))
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'historySurat') collapsed @endif" href="{{ url('panel/history-surat/') }}">
+          <i class="bi bi-clock-history"></i>
+          <span>Hisory Surat</span>
+        </a>
+      </li>
+      @endif
+
+      @if(!empty($PermissionValidasiSekdes))
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'validasiSekdes') collapsed @endif" href="{{ url('panel/validasi-sekdes') }}">
+          <i class="bi bi-check"></i>
+          <span>Validasi Sekdes</span>
         </a>
       </li>
       @endif

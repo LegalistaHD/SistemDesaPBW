@@ -43,6 +43,7 @@ class UsersController extends Controller
 
     public function insert(Request $request)
     {
+        // dd($request);
         $PermissionRoles = RoleHasPermissionModel::getPermission('Add Users', Auth::user()->role_id);
         if(empty($PermissionRoles))
         {
@@ -56,6 +57,7 @@ class UsersController extends Controller
         $user = new User;
         $user->name = trim($request->name);
         $user->email = trim($request->email);
+        $user->phone = trim($request->phone);
         $user->password = Hash::make($request->password);
         if (!empty($request->role_id)) {
             $user->role_id = trim($request->role_id[0]);

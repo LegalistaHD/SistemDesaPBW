@@ -26,7 +26,7 @@ Route::get('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => 'useradmin'], function() {
 
-    Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('panel/dashboard', [DashboardController::class, 'dashboard'])->name('panel.dashboard');
     
     Route::get('panel/users', [UsersController::class, 'users']);
     Route::get('panel/users/add', [UsersController::class, 'add']);
@@ -43,9 +43,18 @@ Route::group(['middleware' => 'useradmin'], function() {
     Route::get('panel/roles/delete/{id}', [RoleController::class, 'delete']);
    
     Route::get('panel/surat', [SuratController::class, 'surat']);
+    Route::get('panel/suratAll', [SuratController::class, 'showAll']);
     
-    Route::get('panel/settings', [SettingsController::class, 'settings']);
+    Route::get('panel/settings', [SettingsController::class, 'settings']); 
     Route::post('panel/settings/update-current-role/{id}', [SettingsController::class, 'updateCurrentRole'])->name('update-current-role');
+
+    //Validasi dan Pelaporan A4
+    Route::post('panel/validasi-operator/{id}', [SuratController::class, 'validateByOperator'])->name('letters.validate.operator');
+    Route::post('panel/validasi-note/{id}', [SuratController::class, 'validateNote'])->name('letters.note');
+    Route::get('panel/history-surat/', [SuratController::class, 'historySurat'])->name('history');
+    Route::get('panel/validasi-sekdes/', [SuratController::class, 'letterSekdes'])->name('letters.sekdes');
+    Route::put('panel/validasi-sekdes/{id}', [SuratController::class, 'validateBySekdes'])->name('letters.validate.sekdes');
+    
 
 
     Route::get('panel/suratEksternal', [SuratEksternalController::class, 'showAll']);
@@ -71,6 +80,8 @@ Route::post('/submitsurat', [SuratController::class, 'submitSurat']);
 Route::get('/surat/{id}', [SuratController::class, 'detail'])->name('surat.detail');
 Route::get('/generate-PDF/{id}', [SuratController::class, 'generatePDF']);
 // Route::get('/historysurat', [SuratController::class, 'HistorySuratUser']);
+
+
 
 
 

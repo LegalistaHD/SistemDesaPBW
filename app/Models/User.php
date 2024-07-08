@@ -56,6 +56,10 @@ class User extends Authenticatable
         return $this->morphOne(UserProfile::class, 'id');
     }
 
+    public function surats()
+    {
+        return $this->hasMany(Surat::class);
+    }
     
     static public function getSingle($id)
     {
