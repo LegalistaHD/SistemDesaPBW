@@ -6,7 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "arielmejiadev/larapex-charts": "*",
         "barryvdh/laravel-dompdf": "^2.2",
+        "chartisan/chartisan": "*",
+        "consoletvs/charts": "*",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9"
     },

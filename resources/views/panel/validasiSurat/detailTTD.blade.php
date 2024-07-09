@@ -18,7 +18,7 @@
               
               <div class="row">
                   <div class="col-md-6">
-                      <h5 class="card-title">Status Surat Belum Tervalidasi Operator</h5>
+                      <h5 class="card-title">Status Riwayat Surat</h5>
                   </div>
   
                    {{-- <div class="col-md-6" style="text-align: right">
@@ -37,10 +37,7 @@
                       <th scope="col">Jenis</th>
                       <th scope="col">Status</th>
                       <th scope="col">Date</th>
-                      {{-- @if(!empty($PermissionEdit) || !empty($PermissionEdit)) --}}
-                      <th scope="col">Action</th>
-                      <th>Catatan Kekurangan</th>
-                      {{-- @endif --}}
+                      <th scope="col">Detail Surat</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -71,21 +68,7 @@
                               
                           {{-- <td>{{ $s->validate }}</td> --}}
                           <td>{{ $s->created_at }}</td>
-                          <td>
-                            <form action="{{ route('letters.validate.operator', $s->id) }}" method="POST">
-                              @csrf
-                              <button type="submit" class="btn btn-primary">Validasi Operator</button>
-                          </form>
-                          </td>
-                          <td>
-                            <form action="{{ route('letters.note', $s->id) }}" method="POST">
-                              @csrf
-                              <label for="catatan">Catatan Penolakan:</label>
-                              <textarea name="catatan" id="catatan" required></textarea>
-                              <button type="submit">Submit</button>
-                          </form>
-                          
-                          </td>
+                          <td> <a href="{{ route('surat.detail', $s->id) }}" class="btn btn-primary btn-sm">Detail</a></td>
                           </tr>
                       @endforeach
                   </tbody>
@@ -95,7 +78,7 @@
           </div>
   
         </div>
-  
+        
       </div>
     </section>
 

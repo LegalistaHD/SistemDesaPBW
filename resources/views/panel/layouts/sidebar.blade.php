@@ -10,6 +10,8 @@
         $PermissionDisposisiSurat = App\Models\RoleHasPermissionModel::getPermission('Disposisi', Auth::user()->role_id);
         $PermissionValidasiOperator = App\Models\RoleHasPermissionModel::getPermission('Validasi Operator', Auth::user()->role_id);
         $PermissionValidasiSekdes = App\Models\RoleHasPermissionModel::getPermission('Validasi Sekdes', Auth::user()->role_id);
+        $PermissionValidasiKades = App\Models\RoleHasPermissionModel::getPermission('Validasi Kades', Auth::user()->role_id);
+        $PermissionPelaporan = App\Models\RoleHasPermissionModel::getPermission('Pelaporan Statistik', Auth::user()->role_id);
       @endphp
 
       <li class="nav-item">
@@ -46,6 +48,16 @@
       </li>
       @endif
 
+      @if(!empty($PermissionPelaporan))
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'pelaporan') collapsed @endif" href="{{ url('panel/pelaporan') }}">
+          <i class="bi bi-envelope"></i>
+          <span>Pelaporan Statistik</span>
+        </a>
+      </li>
+      @endif
+
+ 
       @if(!empty($PermissionValidasiOperator))
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) != 'suratValidasiOperator') collapsed @endif" href="{{ url('panel/suratAll') }}">
@@ -74,6 +86,15 @@
       </li>
       @endif
       
+      @if(!empty($PermissionValidasiKades))
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'validasiKades') collapsed @endif" href="{{ url('panel/validasi-kades') }}">
+          <i class="bi bi-check"></i>
+          <span>Validasi Kades</span>
+        </a>
+      </li>
+      @endif
+
       @if(!empty($PermissionSuratEksternal))
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) != 'suratEksternal') collapsed @endif" href="{{ url('panel/suratEksternal') }}">

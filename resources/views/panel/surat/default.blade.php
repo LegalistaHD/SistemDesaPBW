@@ -10,6 +10,11 @@
   <p>{{ $surat->user_id }}</p>
   <p>{{ $surat->jenisSurat->nama_jenis }}</p>
   <p>{{ $surat->jenisSurat->deskripsi }}</p>
-  <p>{{ $surat->status }}</p>
+  <img src="{{ $surat->tanda_tangan }}"/>
+  {{-- @if($surat->tanda_tangan)
+    <p>Tanda Tangan:</p>
+    <img src="{{ asset('tanda_tangan/' . $surat->tanda_tangan . '.png') }}" alt="Tanda Tangan" style="width: 150px; height: auto;">
+  @endif --}}
+
 </body>
 </html>
